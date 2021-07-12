@@ -1,0 +1,56 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="3.css"> -->
+    <style>
+        body {
+            background-color:rgb(187, 243, 250);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id=container>
+        <h1 class="title">LUCKY NUMBER</h1>
+        <div>
+            <p>Dự đoán con số của bạn nằm trong khoảng từ 1 đến 10</p>
+            <input type="text" id=input class="input"> 
+            <button type="button" class="btn" onclick="randomNumber()">QUAY SỐ</button>
+            <p id="plays-indicator"></p>
+        </div>
+    </div>
+
+    <!-- <script src="3.js"></script> -->
+    <script>
+        
+        let max = 10;
+        let times = 3;
+
+        randomNumber = () => {
+            let result = Math.floor(Math.random() * max);
+            let guessNumber = parseInt(document.getElementById("input").innerHTML);
+            let indicator = document.getElementById("plays-indicator");
+
+            if (guessNumber == result){
+                indicator.innerHTML = "Chúc mừng bạn đã đoán chính xác. Con số là " + result;
+            }else{
+                times --;
+                if(times > 0){
+                    indicator.innerHTML = "Sai rồi, con số đúng phải là " + result + ". Bạn còn " + times + " lần đoán.";
+                }else{
+                    indicator.innerHTML = "Tiếc quá, hết lượt mất rồi. Con số đúng phải là " + result;
+                }
+                
+            }
+        }
+        
+    </script>
+
+</body>
+
+</html>
